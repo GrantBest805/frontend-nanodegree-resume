@@ -33,13 +33,13 @@ var bio = {
 
 		if(bio.skills.length > 0) {
 			$("#header").append(HTMLskillsStart);
-			for( i in bio.skills) {
+			for(var i = 0; i < bio.skills.length; i++) {
 				var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
 				$("#skills").append(formattedSkill);
 			}
 		}
 	}
-}
+};
 // Display Bio
 bio.display();
 
@@ -84,7 +84,7 @@ var work = {
 
 		}
 	}
-}
+};
 // Display Work History
 work.display();
 
@@ -157,7 +157,7 @@ var education = {
 
 		}
 	}
-}
+};
 // Display education
 education.display();
 
@@ -190,7 +190,7 @@ var projects = {
 			$(".project-entry:last").append(formattedProject);
 		}
 	}
-}
+};
 
 //  Display Projects
 projects.display();
