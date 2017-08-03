@@ -67,7 +67,7 @@ h5 {
   font-size: 14px;
   color: #999;
   line-height: 16px;
-  float: left;
+  /*float: left;*/
 }
 
 .location-text {
@@ -124,12 +124,11 @@ a {
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
+  background-color: #148cae;
 }
 
-/* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #148cae;
 }
 
 .flex-box {
