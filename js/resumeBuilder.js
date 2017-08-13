@@ -30,6 +30,8 @@ var bio = {
 		var formattedLinkedin = HTMLlinkedin.replace("%data%", bio.contacts.linkedin);
 		var formattedContact = formattedMobile + formattedEmail + formattedGithub + formattedLinkedin;
 		$("#topContacts").append(formattedContact);
+		// Append to Footer
+		$("#footerContacts").append(formattedContact);
 
 		if(bio.skills.length > 0) {
 			$("#header").append(HTMLskillsStart);
@@ -38,14 +40,6 @@ var bio = {
 				$("#skills").append(formattedSkill);
 			}
 		}
-		// Footer Bio contacts
-		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-		var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-		var formattedLinkedin = HTMLlinkedin.replace("%data%", bio.contacts.linkedin);
-		var formattedContact = formattedMobile + formattedEmail + formattedGithub + formattedLinkedin;
-		$("#footerContacts").append(formattedContact);
-
 	}
 };
 // Display Bio
