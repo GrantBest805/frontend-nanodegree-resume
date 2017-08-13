@@ -11,11 +11,11 @@ var bio = {
 		"location": "Ventura, California"
 	},
 	"welcome": "Welcome to my resume dynamically created with JavaScript ! I am a Entrepreneurial minded developer with the ability to create fully responsive Web Sites and Applications, from Design to Database Structure.",
-	"bioPic": "images/Linkedin_Pro.jpg",
+	"biopic": "images/Linkedin_Pro.jpg",
 	display: () => {
 		var formattedName = HTMLheaderName.replace("%data%", bio.name);
 		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-		var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 		var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcome);
 
 		$("#header").prepend(formattedRole);
@@ -38,6 +38,14 @@ var bio = {
 				$("#skills").append(formattedSkill);
 			}
 		}
+		// Footer Bio contacts
+		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+		var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+		var formattedLinkedin = HTMLlinkedin.replace("%data%", bio.contacts.linkedin);
+		var formattedContact = formattedMobile + formattedEmail + formattedGithub + formattedLinkedin;
+		$("#footerContacts").append(formattedContact);
+
 	}
 };
 // Display Bio
@@ -95,15 +103,14 @@ var education = {
 			"name": "Coding Dojo",
 			"dates": "February 2017 - July 2017",
 			"degree": "Full Stack Development Certificate",
-
-			"majors": "Web Development",
+			"majors": ["Web Development"],
 			"location": "Burbank, California",
 		},
 		{
 			"name": "Udacity",
 			"dates": "June 2017 - August 2017",
 			"degree": "Front-End nanodegree",
-			"majors": "Front-End Web Development",
+			"majors": ["Front-End Web Development"],
 			"location": "Ventura, California",
 		},
 	],
@@ -112,39 +119,41 @@ var education = {
 			"title": "Responsive Websites",
 			"school": "Udacity",
 			"dates": "June 2017",
-			"url": ""
+			"url": "https://www.udacity.com/"
 		},
 		{
 			"title": "JavaScript ",
 			"school": "Udacity",
 			"dates": "July 2017",
-			"url": ""
+			"url": "https://www.udacity.com/"
 		},
 		{
 			"title": "Responsive Images",
 			"school": "Udacity",
 			"dates": "July 2017",
-			"url": ""
+			"url": "https://www.udacity.com/"
 		},
 		{
 			"title": "Version Control , Git Github",
 			"school": "Udacity",
 			"dates": "June 2017",
-			"url": "",
+			"url": "https://www.udacity.com/",
 		},
 	],
 	display: () => {
 		$("#education").append(HTMLschoolStart);
 		for(var i = 0; i < education.schools.length; i++) {
 
-			formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].name);
-			formattedSchoolDate = HTMLschoolDates.replace("%data%", education.schools[i].dates);
-			formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
-			formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
-			$(".education-entry:last").append(formattedSchoolName);
-			$(".education-entry:last").append(formattedSchoolDate);
-			$(".education-entry:last").append(formattedSchoolLocation);
-			$(".education-entry:last").append(formattedMajor);
+			var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].name);
+			var formattedSchoolDate = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+			var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+			var formattesEducation = formattedSchoolName + formattedSchoolDate + formattedSchoolLocation;
+			$(".education-entry:last").append(formattesEducation);
+			for(var x = 0; x < education.schools[i].majors.length; x++){
+				var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors[x]);
+				$(".education-entry:last").append(formattedMajor);
+			}
+
 
 		}
 		$(".education-entry:last").append(HTMLonlineClasses);
@@ -163,45 +172,47 @@ education.display();
 
 
 var projects = {
-	myProjects: [
+	projects: [
 		{
 			"title": "Dock It",
 			"date": "May 2017",
 			"description": "Dock_It is a working mockup of a scheduling app for small businesses. The Idea is to get rid of the clipboard hanging in the break room. Create a Group for your company, give your employees the group ID and thats it! Now the Group admin can create Positions and fill those positions with events. (Built with Ruby on Rails using RESTFull API) Currently Working on full version, Integrating Full Calendar.",
+			"images": ["images/resize_dockit.png"]
 		},
 		{
 			"title": "Portfolio Page",
 			"date": "July 2017",
-			"description": "My Portfolio Page Is a Simple, Fully Responsive Design. With the help of a great tools like Gulp and FlexBox this site is Responsive and Minimized, for a Great Development and User experience."
+			"description": "My Portfolio Page Is a Simple, Fully Responsive Design. With the help of a great tools like Gulp and FlexBox this site is Responsive and Minimized, for a Great Development and User experience.",
+			"images": ['images/resize_portfolio.png']
 		},
 		{
 			"title": "MEAN topics",
 			"date": "April 2017",
-			"description": "MEAN Topics is a simple Blog application, built with Node.js, Angluar, Express and MongoDB, using RESTful API's and CRUD operations. Users can create topics, Post on a topic and also Comment on Posts."
+			"description": "MEAN Topics is a simple Blog application, built with Node.js, Angluar, Express and MongoDB, using RESTful API's and CRUD operations. Users can create topics, Post on a topic and also Comment on Posts.",
+			"images": ['images/rsz_topics.png']
 		}
 	],
 	display: () => {
-		for (var p = 0; p < projects.myProjects.length; p++) {
+		for (var p = 0; p < projects.projects.length; p++) {
 			$("#projects").append(HTMLprojectStart);
-			var projectTitle = HTMLprojectTitle.replace("%data%", projects.myProjects[p].title);
-			var projectDates = HTMLprojectDates.replace("%data%", projects.myProjects[p].date);
-			var projectDescription = HTMLprojectDescription.replace("%data%", projects.myProjects[p].description);
+			var projectTitle = HTMLprojectTitle.replace("%data%", projects.projects[p].title);
+			var projectDates = HTMLprojectDates.replace("%data%", projects.projects[p].date);
+			var projectDescription = HTMLprojectDescription.replace("%data%", projects.projects[p].description);
 			var formattedProject = projectTitle + projectDates + projectDescription;
 			$(".project-entry:last").append(formattedProject);
-		}
+			$(".project-entry").find("a").attr('href', 'https://grantbest805.github.io/porfolio/');
+			for(var i = 0; i < projects.projects[p].images.length; i++){
+				var formattedimage = HTMLprojectImage.replace("%data%", projects.projects[p].images[i]);
+				$(".project-entry:last").append(formattedimage);
+			}
+
+			}
 	}
 };
 
 //  Display Projects
 projects.display();
 
-// Footer contacts
-var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-var formattedLinkedin = HTMLlinkedin.replace("%data%", bio.contacts.linkedin);
-var formattedContact = formattedMobile + formattedEmail + formattedGithub + formattedLinkedin;
-$("#footerContacts").append(formattedContact);
 
 // internationalize Name
 function inName(name) {
